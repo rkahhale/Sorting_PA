@@ -1,0 +1,265 @@
+CSE 12 Progran 4
+Rateb Kahhaleh
+A14252334
+05-19-2018
+
+Part 2: Running Time of Various sort Algorithms
+
+ I) random-strings.txt
+
+  0. Bubble
+    
+     A. I used "java SortTimer random-strings.txt 0 1000 1000 20 5". 
+        I decreased the "increment", "steps", and "reps" compared to other 
+        algorithm testers, as bubble is super slow as the input (words) 
+        increases.    
+     
+     B.   Document: random-strings.txt
+           sortAlg: 0
+          =======================================
+          1:    1000 words in      91 milliseconds
+          2:    2000 words in      59 milliseconds
+          3:    3000 words in     134 milliseconds
+          4:    4000 words in     244 milliseconds
+          5:    5000 words in     380 milliseconds
+          6:    6000 words in     555 milliseconds
+          7:    7000 words in     761 milliseconds
+          8:    8000 words in     994 milliseconds
+          9:    9000 words in    1267 milliseconds
+         10:   10000 words in    1580 milliseconds
+         11:   11000 words in    1925 milliseconds
+         12:   12000 words in    2238 milliseconds
+         13:   13000 words in    2608 milliseconds
+         14:   14000 words in    3017 milliseconds
+         15:   15000 words in    3495 milliseconds
+         16:   16000 words in    4021 milliseconds
+         17:   17000 words in    4600 milliseconds
+         18:   18000 words in    4929 milliseconds
+         19:   19000 words in    5531 milliseconds
+         20:   20000 words in    6097 milliseconds
+ 
+     C. O(n^2), by plotting the above data above it's easy to see that it's
+        O(n^2), also by looking at the data points we can easily infer that 
+        it's not constant, linear, and it seems greater than nlon(n). All that,
+        plus what we already know about Bubble Sort worst and best time 
+        complexity we deduce it's O(n^2).
+
+  1. Insertion
+     
+     A. I used "java SortTimer random-strings.txt 1 100000 10000 11 100"
+        Since this modified insertion is very fast, we can afford to increase 
+        the "steps", and the "reps" as we wont have to wait for a long period. 
+        Therefore, getting more accurate data. And since the tester won't take 
+        more than 199999 words, we have to approach as much we can to get more 
+        informative data (with larger time). 
+              
+     B.  Document: random-strings.txt 
+          sortAlg: 1
+         =======================================      
+         1:  100000 words in     251 milliseconds
+         2:  110000 words in     305 milliseconds
+         3:  120000 words in     368 milliseconds
+         4:  130000 words in     410 milliseconds
+         5:  140000 words in     514 milliseconds
+         6:  150000 words in     601 milliseconds
+         7:  160000 words in     623 milliseconds
+         8:  170000 words in     723 milliseconds
+         9:  180000 words in     799 milliseconds
+        10:  190000 words in     898 milliseconds
+        11:  199999 words in     999 milliseconds
+
+     C. For the above Test, it seems like it's O(n*log(n)) through plotting the 
+        data.Probably, With more expensive memory copies and comparision, i.e. 
+        incease words and reps it will be almost O(n^2)
+
+  2. Merge
+     A. I used "java SortTimer random-strings.txt 1 100000 10000 11 100". 
+        for reasons similar to why I chose that for Insertion above.
+
+     B. Document: random-strings.txt
+        sortAlg: 2
+       =======================================
+       1:  100000 words in     120 milliseconds
+       2:  110000 words in      72 milliseconds
+       3:  120000 words in      78 milliseconds
+       4:  130000 words in      86 milliseconds
+       5:  140000 words in     103 milliseconds
+       6:  150000 words in     110 milliseconds
+       7:  160000 words in     152 milliseconds
+       8:  170000 words in     132 milliseconds
+       9:  180000 words in     142 milliseconds
+      10:  190000 words in     146 milliseconds
+      11:  199999 words in     178 milliseconds
+
+     C. O(nlog(n)). By plotting the above data and putting the time on the x 
+        axis and the # of words on the y axis, the plot seemed to be nlog(n), 
+        as the data is not perfectly (hence, the factor of log(n)) but the 
+        plot showed a n*log(n) pattern. 
+  
+  3. Quick 
+     A. I used "java -Xss128m SortTimer random-strings-sorted.txt 3 100000 10000 11 50"
+        the flag "-Xss128m" was used to increase the stack size to avoid a 
+        stackoverflow. we can afford to increase the "steps", and the "reps" as 
+        we wont have to wait for a long period. Therefore, getting more accurate data. 
+        And since the tester won't take more than 199999 words, we have to approach 
+        as much we can to get more informative data (with larger time). 
+     
+     B. Document: random-strings.txt
+         sortAlg: 3
+        =======================================
+        1:  100000 words in      37 milliseconds
+        2:  110000 words in      36 milliseconds
+        3:  120000 words in      41 milliseconds
+        4:  130000 words in      54 milliseconds
+        5:  140000 words in      51 milliseconds
+        6:  150000 words in      58 milliseconds
+        7:  160000 words in      63 milliseconds
+        8:  170000 words in      64 milliseconds
+        9:  180000 words in      67 milliseconds
+       10:  190000 words in      73 milliseconds
+       11:  199999 words in      77 millisecond
+   
+     C. O(n*log(n)), by plotting the above the data. words on the x-axis and
+        time on y-axis. it's slower than linear yet does not show quadratic 
+        behavior.  
+
+ II) random-strings-sorted.txt
+
+  0. Bubble
+     A. I used "java SortTimer random-strings-sorted.txt 0 100000 10000 20 5". 
+        Since Bubble is much faster in sorted than unsorted list we can 
+        increase the "start" and "increment" compared to in an unsorted list. 
+
+     B. Document: random-strings-sorted.txt
+         sortAlg: 0
+       =======================================
+       1:  100000 words in       0 milliseconds
+       2:  110000 words in       0 milliseconds
+       3:  120000 words in       0 milliseconds
+       4:  130000 words in       0 milliseconds
+       5:  140000 words in       1 milliseconds
+       6:  150000 words in       1 milliseconds
+       7:  160000 words in       1 milliseconds
+       8:  170000 words in       1 milliseconds
+       9:  180000 words in       2 milliseconds
+      10:  190000 words in       2 milliseconds
+      11:  199999 words in       2 milliseconds
+      12:  199999 words in       2 milliseconds
+      13:  199999 words in       2 milliseconds
+      14:  199999 words in       3 milliseconds
+      15:  199999 words in       3 milliseconds
+      16:  199999 words in       3 milliseconds
+      17:  199999 words in       4 milliseconds
+      18:  199999 words in       4 milliseconds
+      19:  199999 words in       4 milliseconds
+      20:  199999 words in       4 milliseconds
+     
+     C. The above data for this file shows that it's O(log(n)), however that
+        is probably due to the fact that the time is very short relatively 
+        and with a longer time the data might look more like the Bubble's 
+        best case of O(n).
+
+  1. Insertion
+     A. I used "java SortTimer random-strings-sorted.txt 1 10000 10000 11 100"
+        I used those parametes so that I can compare it to the tester
+        when using random-string.txt.
+     
+     B. Document: random-strings-sorted.txt
+        sortAlg: 0
+       =======================================
+       1:  100000 words in       4 milliseconds
+       2:  110000 words in       4 milliseconds
+       3:  120000 words in       4 milliseconds
+       4:  130000 words in       4 milliseconds
+       5:  140000 words in       5 milliseconds
+       6:  150000 words in       5 milliseconds
+       7:  160000 words in       5 milliseconds
+       8:  170000 words in       6 milliseconds
+       9:  180000 words in       6 milliseconds
+      10:  190000 words in       6 milliseconds
+      11:  199999 words in       7 milliseconds
+
+
+     C. The above data for this file shows that it's O(log(n)), however that
+        is probably due to the fact that the time is very short relatively. Or
+        the fact that it's using binary search on an already sorted list.  
+
+  2. Merge
+     A. I used "java SortTimer random-strings.txt 1 100000 10000 11 100".
+        I used those parametes so that I can compare it to the tester
+        when using random-string.txt.
+     
+     B. 
+        Document: random-strings-sorted.txt
+         sortAlg: 1
+       =======================================
+       1:  10000 words in       4 milliseconds
+       2:  11000 words in       4 milliseconds
+       3:  12000 words in       4 milliseconds
+       4:  13000 words in       4 milliseconds
+       5:  14000 words in       5 milliseconds
+       6:  15000 words in       5 milliseconds
+       7:  16000 words in       5 milliseconds
+       8:  17000 words in       6 milliseconds
+       9:  18000 words in       6 milliseconds
+      10:  19000 words in       6 milliseconds
+      11:  20000 words in       7 milliseconds
+     
+     C. The above data for this file shows that it's O(log(n)), however that
+        is probably due to the fact that the time is very short relatively. For 
+        bigger time it will probably look like it's best case of n*log(n). 
+  
+  3. Quick 
+     A. I used 
+        "java -Xss128m SortTimer random-strings-sorted.txt 3 10000 10000 10 10"
+        as taking the same parameters (100k starting words) as in with 
+        random-strings seemed to be taking extermely long time.
+
+     B. Document: random-strings-sorted.txt
+         sortAlg: 3
+       =======================================
+       1:  10000 words in       218 milliseconds
+       2:  11000 words in       721 milliseconds
+       3:  12000 words in      1596 milliseconds
+       4:  13000 words in      3751 milliseconds
+       5:  14000 words in      5853 milliseconds
+       6:  15000 words in      9010 milliseconds
+       7:  16000 words in     13135 milliseconds
+       8:  17000 words in     14986 milliseconds
+       9:  18000 words in     23940 milliseconds
+      10:  19000 words in     29732 milliseconds
+          
+     C.O(n^2), by comparing the data point one with the later ones. And
+       the plot showed a quadratic pattern. 
+
+ III) What do you notice about the behaviour algoritgthms
+      in the pre-sorted? They all showed ) O(n*log(n)) time complexity
+      except for "Bubble" which seemed significantly slower and had a 
+      time complexity of O(n^2). 
+            
+
+Part 3: Examining Modified Insertion Sort
+
+ I) What does the method binsearch actually do?
+    it's baisically a binary search that find the insertion point in comparision
+    in O(log(n)) time complexity as opposed to the classic insertion that finds 
+    the in O(n) time complexity per itteratom. Therefore, the Insertion Sort time 
+    complexity will be O(n*log(n)) as opposed to its classic O(n^2) from n*n.  
+
+ II) How is it used in the modified insertion sort?
+     It looks for the insertion point in a faster manner than the 
+     classic insertion does. Making Insertion's time complexity O(n*log(n)) 
+     as opposed to O(n^2). 
+
+ III) What is the space complexity of classic insertion sort? 
+      (in other words, how much additional (temp) space is required
+      to have insertion sort work)? O(1)
+       
+ IV) What is the space complexit of modified insertion sort? (how much
+     additional (temp) space used by modiefied insertion sort)  O(log(n))
+     As binSearch is recursive and it creates multiple stack frames, one 
+     for each recursive call to the binSearch and the number of recursive 
+     Calls is O(log(n)). 
+
+
+
